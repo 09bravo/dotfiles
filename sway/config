@@ -1,3 +1,11 @@
+input type:pointer {
+    left_handed disabled
+    tap enabled
+    natural_scroll disabled
+    dwt enabled
+    accel_profile "flat" # disable mouse acceleration (enabled by default; to set it manually, use "adaptive" instead of "flat")
+    #pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
+}
 # TV mirroring support
 #output HDMI-A-1 mode 1366x768 position 0 0
 #output eDP-1 mode 1366x768 position 0 0
