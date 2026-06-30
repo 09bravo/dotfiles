@@ -1,6 +1,10 @@
-#!/bin/bash
+if command -v sudo &>/dev/null
+then
+sudo pacman -S grim flameshot ttf-dejavu swaybg sway foot ttf-nerd-fonts-symbols ttf-fira-code wofi autotiling-rs xdg-desktop-portal-wlr
+else
 su -c 'pacman -S grim flameshot ttf-dejavu swaybg sway foot ttf-nerd-fonts-symbols ttf-fira-code wofi autotiling-rs xdg-desktop-portal-wlr'
-rm -Rf wall-e/sources.txt
+fi
 mkdir -p ~/.config
-mv flameshot sway/ foot/ wofi/ ~/.config/
-mv wall-e ~/
+cp flameshot sway/ foot/ wofi/ ~/.config/
+cp wall-e ~/
+rm -Rf ~/wall-e/sources.txt
