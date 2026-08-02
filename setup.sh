@@ -5,6 +5,6 @@ else
 su -c 'pacman -S grim flameshot ttf-dejavu swaybg sway foot ttf-nerd-fonts-symbols ttf-fira-code wofi autotiling-rs xdg-desktop-portal-wlr'
 fi
 mkdir -p ~/.config
-cp flameshot sway/ foot/ wofi/ ~/.config/
-cp wall-e ~/
+cp -r flameshot sway/ foot/ wofi/ ~/.config/
+cp -r wall-e ~/
 rm -Rf ~/wall-e/sources.txt
