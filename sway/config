@@ -1,3 +1,7 @@
+# Disable Vsync
+output * allow_tearing yes
+output * max_render_time off
+
 input type:pointer {
     left_handed disabled
     tap enabled
@@ -16,10 +20,7 @@ client.focused #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
 client.unfocused #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
 client.urgent #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
 client.placeholder #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
-exec /usr/lib/xdg-desktop-portal-wlr
-exec /usr/lib/xdg-desktop-portal-gtk
-exec /usr/lib/xdg-desktop-portal -r
-exec autotiling-rs
+exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 gaps inner 10
 input * {
     xkb_layout "us,ara"
@@ -48,7 +49,7 @@ set $menu wofi --show
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # if you want a wallpaper uncomment the line blow and enter the path of the your image, but make sure you have the swaybg package installed though 
-output * bg $(find  $HOME/wall-e -type f | shuf -n 1) fill
+output * bg $(find  $HOME/wall-e -type f ! -iname "*.txt" | shuf -n 1) fill
 #
 # Example configuration:
 #
