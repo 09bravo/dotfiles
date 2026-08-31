@@ -20,6 +20,7 @@ client.focused #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
 client.unfocused #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
 client.urgent #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
 client.placeholder #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
+exec autotiling-rs
 exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 gaps inner 10
 input * {
