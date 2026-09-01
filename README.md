@@ -1,7 +1,12 @@
 # dotfiles
-my dotfiles
+Sway dotfiles  
 # Usage
 ```
 ./setup.sh
 ```
-remove or modfie the first line 'output HDMI-A-1 mode 1920x1080@100.000Hz position 0,0' this is just example change it as you like if you have as second monitor if you don't you can safely remove this line.
+
+Please modify the monitor lines as they assume that your monitor is connected via HDMI and is named exactly HDMI-A-1 and that it is a 1080p 100hz monitor
+
+As you would have already guessed these are highly specific settings and will most likely need to be changed depending on your setup. 
+
+I'll make a script that automatically detects your monitor(s) and uses the correct refresh rate, but that'll be coming soon™.
