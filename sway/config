@@ -1,3 +1,5 @@
+seat seat0 xcursor_theme BreezeX-RoséPine 35
+
 # Disable Vsync
 output * allow_tearing yes
 output * max_render_time off
@@ -20,9 +22,11 @@ client.focused #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
 client.unfocused #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
 client.urgent #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
 client.placeholder #c0c0c0 #c0c0c0 #c0c0c0 #c0c0c0
+exec pipewire
 exec autotiling-rs
 exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
 gaps inner 10
+
 input * {
     xkb_layout "us,ara"
    xkb_options "grp:alt_shift_toggle"
@@ -50,7 +54,7 @@ set $menu wofi --show
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # if you want a wallpaper uncomment the line blow and enter the path of the your image, but make sure you have the swaybg package installed though 
-output * bg $(find  $HOME/wall-e -type f ! -iname "*.txt" | shuf -n 1) fill
+output * bg  $HOME/wall-e/$(shuf --random-source=/dev/urandom -n 1 $HOME/wall-e/list.txt) fill
 #
 # Example configuration:
 #
@@ -236,7 +240,9 @@ bar {
     colors {
         statusline #ffffff
         background #ffffff00
-        inactive_workspace #32323200 #32323200 #5c5c5c
+	active_workspace #ffffff00 #ffffff00 #ffffff
+	focused_workspace #ffffff00 #014D4E #ffffff
+        inactive_workspace #ffffff00 #ffffff00 #ffffff
     }
 }
 

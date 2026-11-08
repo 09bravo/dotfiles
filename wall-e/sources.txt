@@ -1,3 +1,13 @@
-1080ti.jpg: https://www.nvidia.com/en-us/geforce/community/wallpapers/#GEFORCE-GTX1080-WALLPAPER
-GeBfdnna0AAy-vY.jpg: https://x.com/maburu_ekaki/status/1864595588706390211
-1.png: Unknown (alot of sources have this image im not sure which is the originally, you can dig in google lens if you are interested)
+Note: although I try my best to source the orignal sources instead of reuploads, the list is ultimately just the places I downloaded the images from,
+and thus I decided to put a "confidence marker" for sources that are:
+1. confirmed 
+2. probably 
+3. questionable
+
+1080ti.jpg: https://www.nvidia.com/en-us/geforce/community/wallpapers/#GEFORCE-GTX1080-WALLPAPER [confirmed]
+GeBfdnna0AAy-vY.jpg: https://x.com/maburu_ekaki/status/1864595588706390211 [confirmed]
+1349793.png: https://wall.alphacoders.com/big.php?i=1349793 [probably]
+kde_glow_yellow.jpg: https://www.wallpaperflare.com/linux-kde-plasma-operating-system-logo-yellow-wallpaper-yiexp [questionable]
+openbsd.png: https://www.reddit.com/r/openbsd/comments/1uo73mc/minimal_openbsd_gruvbox_wallpaper [confirmed]
+caellaigh-art-destroy-the-ice-wall.jpg: https://www.artstation.com/artwork/ELmZPn [confirmed]
+m0sbpob8ses21.png: https://www.reddit.com/r/wallpaper/comments/bdelg9/deja_vu_1920x1080/ [probably]
