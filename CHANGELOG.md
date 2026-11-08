@@ -8,7 +8,8 @@ Installer changes:
 - Supported a wider selection of Arch-based distribution
 - Added automatic backup support
 - Script cleaned overall
-- Automatically installing autotiling-rs for Void-Linux (it is not available in the official repositories unlike Arch-Based distributions)
+- Automatically install autotiling-rs for Void-Linux (it is not available in the official repositories unlike Arch-Based distributions)
+- Automatically install my neovim config
 - And more that I probably forgot to mention!
 
 Sway changes:
