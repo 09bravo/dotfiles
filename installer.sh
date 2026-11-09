@@ -15,9 +15,9 @@ if [[ "$continue" != "y" && "$continue" != "Y" ]]; then
 	exit 0
 fi
 
-arch_packages=(hicolor-icon-theme wl-clipboard neovim grim flameshot ttf-dejavu noto-fonts noto-fonts-emoji noto-fonts-cjk swaybg sway foot ttf-nerd-fonts-symbols ttf-fira-code wofi autotiling-rs xdg-desktop-portal-wlr xorg-xwayland xdg-desktop-portal-gtk rust cargo curl xz)
+arch_packages=(hicolor-icon-theme git wl-clipboard neovim grim flameshot ttf-dejavu noto-fonts noto-fonts-emoji noto-fonts-cjk swaybg sway foot ttf-nerd-fonts-symbols ttf-fira-code wofi autotiling-rs xdg-desktop-portal-wlr xorg-xwayland xdg-desktop-portal-gtk rust cargo curl xz)
 
-void_packages=(hicolor-icon-theme wl-clipboard neovim grim flameshot noto-fonts-ttf noto-fonts-emoji noto-fonts-cjk swaybg sway foot nerd-fonts-symbols-ttf font-firacode wofi xdg-desktop-portal-wlr xorg-server-xwayland xdg-desktop-portal-gtk rust cargo curl xz)
+void_packages=(hicolor-icon-theme git wl-clipboard neovim grim flameshot noto-fonts-ttf noto-fonts-emoji noto-fonts-cjk swaybg sway foot nerd-fonts-symbols-ttf font-firacode wofi xdg-desktop-portal-wlr xorg-server-xwayland xdg-desktop-portal-gtk rust cargo curl xz)
 
 # Name taken from blender source code FYI
 privilege_escalation_tool=""
@@ -42,7 +42,8 @@ case "$NAME" in
 	cargo install --git https://github.com/ammgws/autotiling-rs
 	;;
 *)
-	printf "unsupported distro: %s\n" "$NAME"
+	printf 'unsupported distro: %s\n' "$NAME"
+	exit 1
 	;;
 esac
 
@@ -53,11 +54,12 @@ read -r backup
 if [[ $backup == "y" || $backup == "Y" ]]; then
 	for dir in sway foot wofi; do
 		if [[ -d ~/.config/"$dir" ]]; then
+		    rm -Rf -- ~/.config/"$dir".bak
 			cp -r ~/.config/"$dir" ~/.config/"$dir".bak
 		fi
 	done
 else
-	printf "%s%sYOU ANSWERED $backup AND THEREFORE YOUR CONFIG IS GOING TO BE OVERWRITTEN, YOU HAVE ONLY 5 SECONDS TO CANCEL THE SCRIPT USING Ctrl-C%s\n" "$RED" "$BOLD" "$NC"
+	printf '%s%sYOU ANSWERED %s AND THEREFORE YOUR CONFIG IS GOING TO BE OVERWRITTEN, YOU HAVE ONLY 5 SECONDS TO CANCEL THE SCRIPT USING Ctrl-C%s\n' "$RED" "$BOLD" "$backup" "$NC"
 	for _ in {1..5}; do
 		printf "."
 		sleep 1
@@ -65,6 +67,7 @@ else
 fi
 
 cp -r sway/ foot/ wofi/ ~/.config/
+rm -Rf ~/.config{sway,foot,wofi}
 cp -r wall-e ~/
 
 mkdir -p ~/.local/share/icons
@@ -77,9 +80,9 @@ cd -
 printf 'The script will move another script called startw, I will explain what is it later, but before I move it I want to ask a question. Do you use nvidia proprietary drivers? If that is the case sway needs to be started with the --unsupported-gpu flag [%sy%s/%sn%s] ' "$GREEN" "$NC" "$RED" "$NC"
 read -r proprietary_drivers
 if [[ $proprietary_drivers == "y" || $proprietary_drivers == "Y" ]]; then
-	$privilege_escalation_tool cp startw-nvidia /bin/startw
+	"$privilege_escalation_tool" cp startw-nvidia /bin/startw
 else
-	$privilege_escalation_tool cp startw /bin/startw
+	"$privilege_escalation_tool" cp startw /bin/startw
 fi
 
 printf 'Finished!\nYou should now start sway with startw.\nstartw is a simple script which adds some environment variables and starts sway with D-Bus.\nMake sure D-Bus is installed and enabled'
@@ -90,7 +93,7 @@ if [[ $neovim_config == "y" || $neovim_config == "Y" ]]; then
 	cd ~/
 	git clone https://github.com/09bravo/neovim-config
 	cd neovim-config
-	mkdir ~/.config/nvim
+	mkdir -p ~/.config/nvim
 	cp ./init.lua ~/.config/nvim/
 fi
 printf 'Finished!\n'
